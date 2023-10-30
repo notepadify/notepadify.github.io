@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Notepadify</title>
+    <style id="theme-style">
+        body {
+            background-color: white;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Notepadify</h1>
+    <button id="saveBtn">Save</button>
+    <button id="modeBtn">Switch to Dark Mode</button>
+    <textarea id="textBox" rows="10" cols="30"></textarea>
+
+    <script>
+        const textBox = document.getElementById('textBox');
+        const saveBtn = document.getElementById('saveBtn');
+        const modeBtn = document.getElementById('modeBtn');
+        const themeStyle = document.getElementById('theme-style');
+
+        saveBtn.addEventListener('click', function() {
+            const textToSave = textBox.value;
+            const blob = new Blob([textToSave], {type: "text/plain;charset=utf-8"});
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.download = 'notepadify.txt';
+            link.href = url;
+            link.click();
+        });
+
+        modeBtn.addEventListener('click', function() {
+            if (themeStyle.innerHTML.includes('white')) {
+                themeStyle.innerHTML = 'body { background-color: black; color: white; }';
+                modeBtn.innerHTML = 'Switch to Light Mode';
+            } else {
+                themeStyle.innerHTML = 'body { background-color: white; color: black; }';
+                modeBtn.innerHTML = 'Switch to Dark Mode';
+            }
+        });
+    </script>
+</body>
+</html>
