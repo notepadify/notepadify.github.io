@@ -2,18 +2,28 @@
 <html>
 <head>
     <title>Notepadify</title>
+    <link href='https://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet'>
     <style id="theme-style">
         body {
+            font-family: 'Comfortaa';
             background-color: white;
             color: black;
+            transition: background-color 0.5s, color 0.5s;
+        }
+        #textBox, button {
+            border-radius: 12px;
+            border: 1px solid lightgray;
+        }
+        button {
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Notepadify</h1>
+    <textarea id="textBox" rows="10" cols="30"></textarea><br/>
     <button id="saveBtn">Save</button>
     <button id="modeBtn">Switch to Dark Mode</button>
-    <textarea id="textBox" rows="10" cols="30"></textarea>
 
     <script>
         const textBox = document.getElementById('textBox');
@@ -33,10 +43,10 @@
 
         modeBtn.addEventListener('click', function() {
             if (themeStyle.innerHTML.includes('white')) {
-                themeStyle.innerHTML = 'body { background-color: black; color: white; }';
+                themeStyle.innerHTML = 'body { font-family: Comfortaa; background-color: black; color: white; transition: background-color 0.5s, color 0.5s; } #textBox, button { border-radius: 12px; border: 1px solid lightgray; } button { margin-top: 10px; }';
                 modeBtn.innerHTML = 'Switch to Light Mode';
             } else {
-                themeStyle.innerHTML = 'body { background-color: white; color: black; }';
+                themeStyle.innerHTML = 'body { font-family: Comfortaa; background-color: white; color: black; transition: background-color 0.5s, color 0.5s; } #textBox, button { border-radius: 12px; border: 1px solid lightgray; } button { margin-top: 10px; }';
                 modeBtn.innerHTML = 'Switch to Dark Mode';
             }
         });
